@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>reveal.js - The HTML Presentation Framework</title>
+        <title>Modern front-end workflows</title>
 
         <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
         <meta name="author" content="Hakim El Hattab">
@@ -64,16 +64,16 @@
                     <h2>You already have a good workflow</h2>
                     <p>#kthxbye</p>
                     <aside class="notes">
-                        boss - happy | you - not happy/bored | new challenge = upgrade your workflow
+                        boss - happy | you - not happy/bored | new challenge = upgrade your workflow | not the ultimate workflow |
                     </aside>
                 </section>
                 <section>
                     <ul>
                         <li>Automate your workflow with Grunt</li>
                         <li>CSS preprocessors</li>
-                        <li><em>hier nog een JS based topic</em></li>
-                        <li>Modular and Scalable architecture with CSS</li>
-                        <li><em>hier nog een JS based topic</em></li>
+                        <li><em>JS section 2</em></li>
+                        <li>Modular and Scalable Architecture for CSS</li>
+                        <li><em>JS section 3</em></li>
                         <li>BEM</li>
                     </ul>
                     <aside class="notes">
@@ -85,6 +85,10 @@
                 <section>
                     <h2>CSS preprocessors</h2>
                     <p><a href="http://sass-lang.com">Sass</a> - <a href="http://lesscss.org/">Less</a></p>
+                    <aside class="notes">
+                        Preprocessors define the future of CSS |
+                        Pick the one you like | I prefer Sass
+                    </aside>
                 </section>
                 <section>
                     <h2>Sass</h2>
@@ -157,6 +161,9 @@ nav a {
 /* main.scss */
 @import 'forms';
                     </code></pre>
+                    <aside class="notes">
+                        the core of modular CSS
+                    </aside>
                 </section>
                 <section>
                     <h3>Sass - Mixins</h3>
@@ -171,6 +178,9 @@ nav a {
     @include border-radius(4px);
 }
                     </code></pre>
+                    <aside class="notes">
+                        DRY and maintainable code
+                    </aside>
                 </section>
                 <section>
                     <pre><code data-trim>
@@ -192,7 +202,6 @@ nav {
         padding: 0;
     }
 }
-
                     </code></pre>
                 </section>
                 <section>
@@ -215,10 +224,11 @@ nav {
                     <h3>Sass - Operators</h3>
                     <p>standard operators : <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> and <code>%</code></p>
                     <pre><code data-trim >
-$base-spacing-unit: 20px;
-
 h1 {
     margin-bottom: $base-spacing-unit*3;
+}
+.col--2 {
+    width: 360px / 960px * 100%;  /* = 37.5% */
 }
                     </code></pre>
                 </section>
@@ -243,11 +253,239 @@ col--2 {
                     </code></pre>
                 </section>
                 <section>
+                    <h3>Sass - Functions</h3>
+                    <pre><code data-trim>
+a:hover {
+    color: lighten($link-color, 10%); /* more on color functions :  http://jackiebalzer.com/color */
+}
+.col--2 {
+    width: floor(360px / 960px * 100%);
+}
+.overlay {
+    background-color: rgba(255,0,0,0.75) + rgba(0,255,0,0.75); /* output = rgba(255,255,0,0.75) */
+}
+                    </code></pre>
+                    <p><small>More on <a href="http://sass-lang.com/documentation/Sass/Script/Functions.html">Sass functions</a></small></p>
+                </section>
+                <section>
                     <h3>Sass - Frameworks</h3>
                     <p><a href="http://compass-style.org/">Compass</a> - <a href="http://bourbon.io/">Bourbon</a> - <a href="http://susy.oddbird.net/">Susy</a> - <a href="http://getbootstrap.com/css/#sass">Bootstrap</a> - &hellip;</p>
                 </section>
                 <section>
                     <h2>JS section 2</h2>
+                </section>
+                <section>
+                    <h2>Scalable and Modular Architecture for CSS</h2>
+                    <p><a href="http://smacss.com/">SMACSS</a></p>
+                </section>
+                <section>
+                    <h3>Categorizing CSS rules</h3>
+                    <ol>
+                        <li>Base</li>
+                        <li>Layout</li>
+                        <li>Module</li>
+                        <li>State</li>
+                        <li>Theme</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>1. Base rules</h3>
+                    <pre><code data-trim class="css">
+/* no classes here, only element selectors */
+body {}
+p {}
+a {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>2. Layout rules</h3>
+                    <pre><code data-trim class="css">
+/* grid  */
+.col {}
+.col--2 {}
+.col--primary {}
+
+/* layout specific: .layout-- prefix */
+.layout--homepage {}
+                    </code></pre>
+                    <p><code>.layout--XXXX</code> classes are added to the <code>html</code> tag</p>
+                </section>
+                <section>
+                    <h3>3. Module rules</h3>
+                    <p>Biggest chunk of your CSS file</p>
+                    <pre><code data-trim class="css">
+/* skip the prefix, it's too verbose */
+.module-carousel {}
+
+/* that's the way, uhu uhu */
+.carousel {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>4a. Static State rules</h3>
+                    <pre><code data-trim class="css">
+/* .is- prefix */
+.is-active {}
+.is-hidden {}
+.is-collapsed {}
+.is-expanded {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>4b. Dynamic State rules</h3>
+                    <p>for JavaScript = easier to debug</p>
+                    <pre><code data-trim class="css">
+/* .js-is- prefix */
+.js-is-active {}
+.js-is-hidden {}
+.js-is-collapsed {}
+.js-is-expanded {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>5. Theme rules</h3>
+                    <p>Will you need this one?</p>
+                    <h3 class="fragment">YES!!!!</h3>
+                    <div class="fragment">
+                        <pre><code data-trim class="css">
+.theme--culture .article {}
+.theme--x-mas blockquote:before {
+    content: 'hohoho';
+}
+                        </code></pre>
+                        <p><code>.theme--</code> classes are added to the <code>html</code> tag</p>
+                    </div>
+
+                </section>
+                <section>
+                    <h3>Folder structure</h3>
+                    <p><small>in combination with <a href="http://sass-lang.com">Sass</a></small></p>
+                    <pre><code class="bash">
+| - sass
+   main.scss
+   _site-settings.scss
+   _mixins.scss
+  |- base
+     _base.scss
+     _normalize.scss
+     _defaults.scss
+     _webfonts.scss
+    ...
+  |- layout
+     _layout.scss
+     _grid.scss
+     _sections.scss
+    ...
+  |- modules
+    _modules.scss
+    _carousel.scss
+    _pagination.scss
+    ...
+  |- state
+    _state.scss
+    ...
+  |- theme
+    _theme.scss
+    _x-mas.scss
+    ...
+
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>JS section 3</h2>
+                </section>
+                <section>
+                    <h2>BEM</h2>
+                    <p>Block - Element - Modifier</p>
+                </section>
+                <section>
+                    <pre><code data-trim class="css">
+.block {}
+.block__element {} /* note: double underscore */
+.block--modifier {} /* note: double hyphen */
+                    </code></pre>
+                    <p><small>More on BEM: <a href="http://bem.info/">here</a>, <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">here</a>, <a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">here</a> and <a href="http://coding.smashingmagazine.com/2012/04/16/a-new-front-end-methodology-bem/">here</a></small></p>
+                </section>
+                <section>
+                    <h3>Example</h3>
+                    <pre><code data-trim class="xml">
+<article class="article">
+    <header class="article__header">...</header>
+    <div class="article__body">...</div>
+    <footer class="article__footer">...</footer>
+</article>
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>... with modifier</h3>
+                    <pre><code data-trim class="xml">
+<!-- note: class chaining -->
+<article class="article article--primary">
+    <header class="article__header">...</header>
+    <div class="article__body">...</div>
+    <footer class="article__footer">...</footer>
+</article>
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Naming conventions</h3>
+                    <pre><code data-trim class="css">
+/* Bad */
+.pageHeader {}
+.button--blue {}
+
+/* Good */
+.page-header {}
+.button--primary {}
+                    </code></pre>
+                </section>
+                <section>
+                    <pre><code class="css" data-trim>
+/* This is OK! */
+.article__header--no-border {}
+.teaser--large--primary {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h1>FUGLY!!!</h1>
+                    <p>&ldquo;BEM, so ugly it actually works!&rdquo;</p>
+                    <p><small>&mdash; <a href="https://twitter.com/jdesramaults">@jdesramaults</a></small></p>
+                    <aside class="notes">
+                        mening verdeeld, t is lelijk maar t doet wel zijn werk. makkelijk herkenbaar, makkelijk te debuggen, makkelijk uit te breiden
+                    </aside>
+                </section>
+                <section>
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>It's clear what each selector's purpose is</li>
+                        <li>Less chance of colliding with CSS of third party plugins</li>
+                        <li>Lesser nesting of selectors
+                            <pre><code data-trim class="css">
+/* old skool */
+article > header {}
+/* old skool + Smacss theming */
+.theme--x-mas article > header {}
+/* BEM */
+.article__header {}
+/* BEM + SMACSS theming */
+.theme--x-mas .article__header {}
+                            </code></pre>
+                        </li>
+                        <li class="fragment">&hellip; thus, your CSS rendering is faster</li>
+                    </ul>
+                    <aside class="notes">
+                        en snellere css is voor iedereen een WIN
+                    </aside>
+                </section>
+                <section>
+                    <h3>Sass 3.3 + BEM</h3>
+                    <p><a href="http://www.alwaystwisted.com/post.php?s=2014-02-27-even-easier-bem-ing-with-sass-33">Even Easier BEM-ing with Sass 3.3</a></p>
+                    <p><a href="http://benfrain.com/writing-modular-css-bemoocss-selectors-sass-3-3/">Writing modular CSS (BEM/OOCSS) selectors with Sass 3.3</a></p>
+
+                </section>
+                <section>
+                    <h1>The end</h1>
+                    <h3>Questions?</h3>
                 </section>
             </div>
 
