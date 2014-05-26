@@ -56,6 +56,7 @@
                 <section>
                     <h3>Jochen Vandendriessche</h3>
                     <p>Freelance front-end developer - JS junkie</p>
+                    <p><br></p>
                     <h3>Gregory Van Looy</h3>
                     <p>Freelance HTML &amp; CSS architect - sucks @ JS</p>
                 </section>
@@ -167,11 +168,11 @@ nav a {
                 </section>
                 <section>
                     <h3>Sass - Mixins</h3>
-                    <pre><code data-trim>
+                    <pre><code data-trim class="scss">
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
     -moz-border-radius: $radius;
-    border-radius $radius;
+    border-radius: $radius;
 }
 
 .alert {
@@ -188,13 +189,13 @@ nav a {
 .alert {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
-    border-radius 4px;
+    border-radius: 4px;
 }
                     </code></pre>
                 </section>
                 <section>
                     <h3>Sass - Extends</h3>
-                    <pre><code data-trim>
+                    <pre><code data-trim class="scss">
 nav {
     ul {
         list-style: none;
@@ -205,9 +206,9 @@ nav {
                     </code></pre>
                 </section>
                 <section>
-                    <pre><code data-trim class="css">
+                    <pre><code data-trim class="scss">
 /* extended version */
-%unstyled-list {
+.unstyled-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -215,8 +216,19 @@ nav {
 
 nav {
     ul {
-        @extend %unstyled-list;
+        @extend .unstyled-list;
     }
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <pre><code data-trim class="css">
+/* output */
+.unstyled-list,
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
                     </code></pre>
                 </section>
@@ -236,14 +248,14 @@ h1 {
                     <pre><code data-trim class="css">
 @for $i from 1 through 11 {
     .col--#{$i} {
-        width: ((100%/12) * $i));
+        width: ((100%/12) * $i);
     }
 }
 /* output */
 .col--1 {
     width: 8.3333333%;
 }
-col--2 {
+.col--2 {
     width: 16.6666667%;
 }
 ...
@@ -290,11 +302,15 @@ a:hover {
                 </section>
                 <section>
                     <h3>1. Base rules</h3>
-                    <pre><code data-trim class="css">
+                    <pre><code data-trim class="scss">
 /* no classes here, only element selectors */
 body {}
 p {}
-a {}
+a {
+    &:visited {}
+    &:hover {}
+    &:active {}
+}
                     </code></pre>
                 </section>
                 <section>
@@ -306,7 +322,9 @@ a {}
 .col--primary {}
 
 /* layout specific: .layout-- prefix */
-.layout--homepage {}
+.layout--homepage {
+    .container {}
+}
                     </code></pre>
                     <p><code>.layout--XXXX</code> classes are added to the <code>html</code> tag</p>
                 </section>
@@ -428,6 +446,27 @@ a {}
                     </code></pre>
                 </section>
                 <section>
+                    <pre><code data-trim class="xml">
+<div class="carousel">
+    <header class="carousel__header">
+        <h3 class="carousel__header__title">Carousel</h3>
+    </header>
+    <div class="carousel__clipper">
+        <ul class="carousel__list">
+            <li class="carousel__list__item">...</li>
+            <li class="carousel__list__item">...</li>
+            <li class="carousel__list__item">...</li>
+            <li class="carousel__list__item">...</li>
+        </ul>
+    </div>
+    <footer class="carousel__nav">
+        <a href="#" class="carousel__nav__item carousel__nav__item--prev">...</a>
+        <a href="#" class="carousel__nav__item carousel__nav__item--next">...</a>
+    </footer>
+</div>
+                    </code></pre>
+                </section>
+                <section>
                     <h3>Naming conventions</h3>
                     <pre><code data-trim class="css">
 /* Bad */
@@ -482,6 +521,19 @@ article > header {}
                     <p><a href="http://www.alwaystwisted.com/post.php?s=2014-02-27-even-easier-bem-ing-with-sass-33">Even Easier BEM-ing with Sass 3.3</a></p>
                     <p><a href="http://benfrain.com/writing-modular-css-bemoocss-selectors-sass-3-3/">Writing modular CSS (BEM/OOCSS) selectors with Sass 3.3</a></p>
 
+                </section>
+                <section>
+                    <pre><code data-trim class="scss">
+.block {
+    &__element {}
+
+    &--modifier {}
+}
+/* output */
+.block {}
+.block__element {}
+.block--modifier {}
+                    </code></pre>
                 </section>
                 <section>
                     <h1>The end</h1>
