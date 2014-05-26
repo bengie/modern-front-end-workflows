@@ -73,7 +73,7 @@
                         <li>Coding guidelines
                             <ul>
                                 <li>BEM</li>
-                                <li>F$ck jQuery</li>
+                                <li>F*ck jQuery</li>
                             </ul>
                         </li>
                         <li>Tools
@@ -125,9 +125,7 @@ h3 {}
 .col--primary {}
 
 /* layout specific: .layout-- prefix */
-.layout--homepage {
-    .container {}
-}
+.layout--homepage .container {}
                     </code></pre>
                     <p><code>.layout--XXXX</code> classes are added to the <code>html</code> tag</p>
                 </section>
@@ -169,7 +167,7 @@ h3 {}
                     <h3 class="fragment">YES!!!!</h3>
                     <div class="fragment">
                         <pre><code data-trim class="css">
-.theme--culture .article {}
+.theme--culture .tag {}
 .theme--x-mas blockquote:before {
     content: 'hohoho';
 }
@@ -180,7 +178,7 @@ h3 {}
                 </section>
                 <section>
                     <h3>Folder structure</h3>
-                    <p><small>in combination with <a href="http://sass-lang.com">Sass</a></small></p>
+                    <p><small>in combination with <a href="#/preprocessors">Sass</a></small></p>
                     <pre><code class="bash">
 | - sass
    main.scss
@@ -420,10 +418,11 @@ ToggleModule = (function() {
                             <pre><code data-trim class="css">
 /* old skool */
 article > header {}
-/* old skool + Smacss theming */
-.theme--x-mas article > header {}
 /* BEM */
 .article__header {}
+
+/* old skool + Smacss theming */
+.theme--x-mas article > header {}
 /* BEM + SMACSS theming */
 .theme--x-mas .article__header {}
                             </code></pre>
@@ -434,27 +433,9 @@ article > header {}
                         faster CSS = WIN!
                     </aside>
                 </section>
-                <section>
-                    <h3>Sass 3.3 + BEM</h3>
-                    <p><a href="http://www.alwaystwisted.com/post.php?s=2014-02-27-even-easier-bem-ing-with-sass-33">Even Easier BEM-ing with Sass 3.3</a></p>
-                    <p><a href="http://benfrain.com/writing-modular-css-bemoocss-selectors-sass-3-3/">Writing modular CSS (BEM/OOCSS) selectors with Sass 3.3</a></p>
 
-                </section>
                 <section>
-                    <pre><code data-trim class="scss">
-.block {
-    &__element {}
-
-    &--modifier {}
-}
-/* output */
-.block {}
-.block__element {}
-.block--modifier {}
-                    </code></pre>
-                </section>
-                <section>
-                    <h2>F$ck jQuery</h2>
+                    <h2>F*ck jQuery</h2>
                 </section>
                 <section>
                     <h1>Tools</h1>
@@ -659,7 +640,25 @@ a:hover {
                     <h3>Sass - Frameworks</h3>
                     <p><a href="http://compass-style.org/">Compass</a> - <a href="http://bourbon.io/">Bourbon</a> - <a href="http://susy.oddbird.net/">Susy</a> - <a href="http://getbootstrap.com/css/#sass">Bootstrap</a> - &hellip;</p>
                 </section>
+                <section>
+                    <h3>Sass 3.3 + BEM</h3>
+                    <p><a href="http://www.alwaystwisted.com/post.php?s=2014-02-27-even-easier-bem-ing-with-sass-33">Even Easier BEM-ing with Sass 3.3</a></p>
+                    <p><a href="http://benfrain.com/writing-modular-css-bemoocss-selectors-sass-3-3/">Writing modular CSS (BEM/OOCSS) selectors with Sass 3.3</a></p>
 
+                </section>
+                <section>
+                    <pre><code data-trim class="scss">
+.block {
+    &__element {}
+
+    &--modifier {}
+}
+/* output */
+.block {}
+.block__element {}
+.block--modifier {}
+                    </code></pre>
+                </section>
 				<section>
 					<h3>Why people use jQuery</h3>
 					<ul>
