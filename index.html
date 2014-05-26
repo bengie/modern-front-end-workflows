@@ -827,9 +827,114 @@ a:hover {
                     <h2>Automate your workflow with Grunt</h2>
                     <p><a href="http://gruntjs.com/">gruntjs.com</a></p>
                 </section>
+				<section>
+					<h3>What is grunt?</h3>
+					<p>In one word: <b>automation</b>. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes.</p>
+				</section>
+				
+				<section>
+					<h3>How does it work?</h3>
+					<p>Grunt and Grunt plugins are installed and managed via npm, the Node.js package manager.</p>
+				</section>
+				
                 <section>
                     <h3>Grunt &amp; JS</h3>
                 </section>
+
+				<section>
+					<a href="https://www.npmjs.org/package/grunt-contrib-jshint">grunt-contrib-jshint</a>
+				</section>
+				
+				<section>
+<pre><code data-trim class="js">
+options: {
+  curly: true,
+  browser: true,
+  node: true,
+  camelcase: true,
+  eqeqeq: true,
+  eqnull: true,
+  indent: 2,
+  latedef: true,
+  newcap: true,
+  quotmark: 'single',
+  trailing: true,
+  undef: true,
+  unused: true,
+  strict: true,
+  globals: {
+    'bean': true,
+    'bonzo': true,
+    'qwery': true,
+    'Arbiter': true,
+    'moment': true,
+    'reqwest': true,
+    'App': false,
+    'FB': true,
+  },
+  reporter: require('jshint-stylish')
+},
+all: ['<%= package.jssrc %>/modules/*.js', '<%= package.jssrc %>/*.js', '<%= package.jssrc %>/test/spec/*.js']
+</code></pre>
+				</section>
+				
+				<section>
+					<img src="img/grunt-jshint.png" alt="" />
+				</section>
+				
+				<section>
+					<a href="https://www.npmjs.org/package/grunt-contrib-concat">grunt-contrib-concat</a>
+				</section>
+				
+				<section>
+<pre><code data-trim class="js">
+options: {
+  compress: false,
+  separator: ''
+},
+dist: {
+  src: [
+    '<%= package.jssrc %>/3rdparty/*.js',
+    '<%= package.jssrc %>/main.js',
+    '<%= package.jssrc %>/modules/*.js',
+    '<%= package.jssrc %>/*.js'
+  ],
+  dest: '<%= package.js %>/main.js'
+}
+</code></pre>
+				</section>
+				
+				<section>
+					<img src="img/grunt-concat.png" alt="" />
+				</section>
+				
+				<section>
+					<a href="https://www.npmjs.org/package/grunt-contrib-uglify">grunt-contrib-uglify</a>
+				</section>
+				
+				<section>
+<pre><code data-trim class="js">
+options: {
+  mangle: true,
+  compress: true,
+  beautify: false ,
+  banner: '/*! <%= package.title || package.name %> - v<%= package.version %> - ' +
+          '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+          '<%= package.homepage ? "* " + package.homepage + "\\n" : "" %>' +
+          ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= package.author.name %>;' +
+          ' Licensed <%= _.pluck(package.licenses, "type").join(", ") %> */\n'
+},
+dist: {
+  src: '<%= package.js %>/main.js',
+  dest: '<%= package.js %>/main.min.js'
+}
+</code></pre>
+				</section>
+				
+				<section>
+					<img src="img/grunt-uglify.png" alt="" />
+				</section>
+				
                 <section>
                     <h3>Grunt &amp; CSS</h3>
                 </section>
