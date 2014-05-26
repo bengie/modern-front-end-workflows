@@ -64,18 +64,279 @@
                 </section>
                 <section>
                     <ul>
-                        <li>Automate your workflow with Grunt</li>
-                        <li>CSS preprocessors</li>
-                        <li><em>JS section 2</em></li>
-                        <li>Modular and Scalable Architecture for CSS</li>
-                        <li><em>JS section 3</em></li>
-                        <li>BEM</li>
+                        <li>Modular and scalable architecture
+                            <ul>
+                                <li>SMACSS</li>
+                                <li>JS</li>
+                            </ul>
+                        </li>
+                        <li>Coding guidelines
+                            <ul>
+                                <li>BEM</li>
+                                <li>F$ck jQuery</li>
+                            </ul>
+                        </li>
+                        <li>Tools
+                            <ul>
+                                <li>Sass</li>
+                                <li>Grunt</li>
+                            </ul>
+                        </li>
                     </ul>
                     <aside class="notes">
                     </aside>
                 </section>
                 <section>
-                    <h2>Grunt</h2>
+                    <h2>Scalable and Modular Architecture for CSS</h2>
+                    <p><a href="http://smacss.com/">SMACSS</a></p>
+                </section>
+                <section>
+                    <h3>Categorizing CSS rules</h3>
+                    <ol>
+                        <li>Base</li>
+                        <li>Layout</li>
+                        <li>Module</li>
+                        <li>State</li>
+                        <li>Theme</li>
+                    </ol>
+                </section>
+                <section>
+                    <h3>1. Base rules</h3>
+                    <pre><code data-trim class="scss">
+/* no classes here, only element selectors */
+body {}
+p {}
+a {
+    &:visited {}
+    &:hover {}
+    &:active {}
+}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>2. Layout rules</h3>
+                    <pre><code data-trim class="css">
+/* grid  */
+.col {}
+.col--2 {}
+.col--primary {}
+
+/* layout specific: .layout-- prefix */
+.layout--homepage {
+    .container {}
+}
+                    </code></pre>
+                    <p><code>.layout--XXXX</code> classes are added to the <code>html</code> tag</p>
+                </section>
+                <section>
+                    <h3>3. Module rules</h3>
+                    <p>Biggest chunk of your CSS file</p>
+                    <pre><code data-trim class="css">
+/* skip the prefix, it's too verbose */
+.module-carousel {}
+
+/* that's the way, uhu uhu */
+.carousel {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>4a. Static State rules</h3>
+                    <pre><code data-trim class="css">
+/* .is- prefix */
+.is-active {}
+.is-hidden {}
+.is-collapsed {}
+.is-expanded {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>4b. Dynamic State rules</h3>
+                    <p>for JavaScript = easier to debug</p>
+                    <pre><code data-trim class="css">
+/* .js-is- prefix */
+.js-is-active {}
+.js-is-hidden {}
+.js-is-collapsed {}
+.js-is-expanded {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>5. Theme rules</h3>
+                    <p>Will you need this one?</p>
+                    <h3 class="fragment">YES!!!!</h3>
+                    <div class="fragment">
+                        <pre><code data-trim class="css">
+.theme--culture .article {}
+.theme--x-mas blockquote:before {
+    content: 'hohoho';
+}
+                        </code></pre>
+                        <p><code>.theme--</code> classes are added to the <code>html</code> tag</p>
+                    </div>
+
+                </section>
+                <section>
+                    <h3>Folder structure</h3>
+                    <p><small>in combination with <a href="http://sass-lang.com">Sass</a></small></p>
+                    <pre><code class="bash">
+| - sass
+   main.scss
+   _site-settings.scss
+   _mixins.scss
+  |- base
+     _base.scss
+     _normalize.scss
+     _defaults.scss
+     _webfonts.scss
+    ...
+  |- layout
+     _layout.scss
+     _grid.scss
+     _sections.scss
+    ...
+  |- modules
+    _modules.scss
+    _carousel.scss
+    _pagination.scss
+    ...
+  |- state
+    _state.scss
+    ...
+  |- theme
+    _theme.scss
+    _x-mas.scss
+    ...
+
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>JS modular setup</h2>
+                </section>
+                <section>
+                    <h2>BEM</h2>
+                    <p>Block - Element - Modifier</p>
+                </section>
+                <section>
+                    <pre><code data-trim class="css">
+.block {}
+.block__element {} /* note: double underscore */
+.block--modifier {} /* note: double hyphen */
+                    </code></pre>
+                    <p><small>More on BEM: <a href="http://bem.info/">here</a>, <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">here</a>, <a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">here</a> and <a href="http://coding.smashingmagazine.com/2012/04/16/a-new-front-end-methodology-bem/">here</a></small></p>
+                </section>
+                <section>
+                    <h3>Example</h3>
+                    <pre><code data-trim class="xml">
+<article class="article">
+    <header class="article__header">...</header>
+    <div class="article__body">...</div>
+    <footer class="article__footer">...</footer>
+</article>
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>... with modifier</h3>
+                    <pre><code data-trim class="xml">
+<!-- note: class chaining -->
+<article class="article article--primary">
+    <header class="article__header">...</header>
+    <div class="article__body">...</div>
+    <footer class="article__footer">...</footer>
+</article>
+                    </code></pre>
+                </section>
+                <section>
+                    <pre><code data-trim class="xml">
+<div class="carousel">
+    <header class="carousel__header">
+        <h3 class="carousel__header__title">Carousel</h3>
+    </header>
+    <div class="carousel__clipper">
+        <ul class="carousel__list">
+            <li class="carousel__list__item">...</li>
+            <li class="carousel__list__item">...</li>
+            <li class="carousel__list__item">...</li>
+            <li class="carousel__list__item">...</li>
+        </ul>
+    </div>
+    <footer class="carousel__nav">
+        <a href="#" class="carousel__nav__item carousel__nav__item--prev">...</a>
+        <a href="#" class="carousel__nav__item carousel__nav__item--next">...</a>
+    </footer>
+</div>
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Naming conventions</h3>
+                    <pre><code data-trim class="css">
+/* Bad */
+.pageHeader {}
+.button--blue {}
+
+/* Good */
+.page-header {}
+.button--primary {}
+                    </code></pre>
+                </section>
+                <section>
+                    <pre><code class="css" data-trim>
+/* This is OK! */
+.article__header--no-border {}
+.teaser--large--primary {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h1>FUGLY!!!</h1>
+                    <p>&ldquo;BEM, so ugly it actually works!&rdquo;</p>
+                    <p><small>&mdash; <a href="https://twitter.com/jdesramaults">@jdesramaults</a></small></p>
+                    <aside class="notes">
+                        mening verdeeld, t is lelijk maar t doet wel zijn werk. makkelijk herkenbaar, makkelijk te debuggen, makkelijk uit te breiden
+                    </aside>
+                </section>
+                <section>
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li>It's clear what each selector's purpose is</li>
+                        <li>Less chance of colliding with CSS of third party plugins</li>
+                        <li>Lesser nesting of selectors
+                            <pre><code data-trim class="css">
+/* old skool */
+article > header {}
+/* old skool + Smacss theming */
+.theme--x-mas article > header {}
+/* BEM */
+.article__header {}
+/* BEM + SMACSS theming */
+.theme--x-mas .article__header {}
+                            </code></pre>
+                        </li>
+                        <li class="fragment">&hellip; thus, your CSS rendering is faster</li>
+                    </ul>
+                    <aside class="notes">
+                        faster CSS = WIN!
+                    </aside>
+                </section>
+                <section>
+                    <h3>Sass 3.3 + BEM</h3>
+                    <p><a href="http://www.alwaystwisted.com/post.php?s=2014-02-27-even-easier-bem-ing-with-sass-33">Even Easier BEM-ing with Sass 3.3</a></p>
+                    <p><a href="http://benfrain.com/writing-modular-css-bemoocss-selectors-sass-3-3/">Writing modular CSS (BEM/OOCSS) selectors with Sass 3.3</a></p>
+
+                </section>
+                <section>
+                    <pre><code data-trim class="scss">
+.block {
+    &__element {}
+
+    &--modifier {}
+}
+/* output */
+.block {}
+.block__element {}
+.block--modifier {}
+                    </code></pre>
+                </section>
+                <section>
+                    <h2>F$ck jQuery</h2>
                 </section>
                 <section>
                     <h2>CSS preprocessors</h2>
@@ -278,257 +539,15 @@ a:hover {
                     <p><a href="http://compass-style.org/">Compass</a> - <a href="http://bourbon.io/">Bourbon</a> - <a href="http://susy.oddbird.net/">Susy</a> - <a href="http://getbootstrap.com/css/#sass">Bootstrap</a> - &hellip;</p>
                 </section>
                 <section>
-                    <h2>JS section 2</h2>
+                    <h2>Automate your workflow with Grunt</h2>
                 </section>
                 <section>
-                    <h2>Scalable and Modular Architecture for CSS</h2>
-                    <p><a href="http://smacss.com/">SMACSS</a></p>
+                    <h3>Grunt &amp; CSS</h3>
                 </section>
                 <section>
-                    <h3>Categorizing CSS rules</h3>
-                    <ol>
-                        <li>Base</li>
-                        <li>Layout</li>
-                        <li>Module</li>
-                        <li>State</li>
-                        <li>Theme</li>
-                    </ol>
+                    <h3>Grunt &amp; JS</h3>
                 </section>
-                <section>
-                    <h3>1. Base rules</h3>
-                    <pre><code data-trim class="scss">
-/* no classes here, only element selectors */
-body {}
-p {}
-a {
-    &:visited {}
-    &:hover {}
-    &:active {}
-}
-                    </code></pre>
-                </section>
-                <section>
-                    <h3>2. Layout rules</h3>
-                    <pre><code data-trim class="css">
-/* grid  */
-.col {}
-.col--2 {}
-.col--primary {}
 
-/* layout specific: .layout-- prefix */
-.layout--homepage {
-    .container {}
-}
-                    </code></pre>
-                    <p><code>.layout--XXXX</code> classes are added to the <code>html</code> tag</p>
-                </section>
-                <section>
-                    <h3>3. Module rules</h3>
-                    <p>Biggest chunk of your CSS file</p>
-                    <pre><code data-trim class="css">
-/* skip the prefix, it's too verbose */
-.module-carousel {}
-
-/* that's the way, uhu uhu */
-.carousel {}
-                    </code></pre>
-                </section>
-                <section>
-                    <h3>4a. Static State rules</h3>
-                    <pre><code data-trim class="css">
-/* .is- prefix */
-.is-active {}
-.is-hidden {}
-.is-collapsed {}
-.is-expanded {}
-                    </code></pre>
-                </section>
-                <section>
-                    <h3>4b. Dynamic State rules</h3>
-                    <p>for JavaScript = easier to debug</p>
-                    <pre><code data-trim class="css">
-/* .js-is- prefix */
-.js-is-active {}
-.js-is-hidden {}
-.js-is-collapsed {}
-.js-is-expanded {}
-                    </code></pre>
-                </section>
-                <section>
-                    <h3>5. Theme rules</h3>
-                    <p>Will you need this one?</p>
-                    <h3 class="fragment">YES!!!!</h3>
-                    <div class="fragment">
-                        <pre><code data-trim class="css">
-.theme--culture .article {}
-.theme--x-mas blockquote:before {
-    content: 'hohoho';
-}
-                        </code></pre>
-                        <p><code>.theme--</code> classes are added to the <code>html</code> tag</p>
-                    </div>
-
-                </section>
-                <section>
-                    <h3>Folder structure</h3>
-                    <p><small>in combination with <a href="http://sass-lang.com">Sass</a></small></p>
-                    <pre><code class="bash">
-| - sass
-   main.scss
-   _site-settings.scss
-   _mixins.scss
-  |- base
-     _base.scss
-     _normalize.scss
-     _defaults.scss
-     _webfonts.scss
-    ...
-  |- layout
-     _layout.scss
-     _grid.scss
-     _sections.scss
-    ...
-  |- modules
-    _modules.scss
-    _carousel.scss
-    _pagination.scss
-    ...
-  |- state
-    _state.scss
-    ...
-  |- theme
-    _theme.scss
-    _x-mas.scss
-    ...
-
-                    </code></pre>
-                </section>
-                <section>
-                    <h2>JS section 3</h2>
-                </section>
-                <section>
-                    <h2>BEM</h2>
-                    <p>Block - Element - Modifier</p>
-                </section>
-                <section>
-                    <pre><code data-trim class="css">
-.block {}
-.block__element {} /* note: double underscore */
-.block--modifier {} /* note: double hyphen */
-                    </code></pre>
-                    <p><small>More on BEM: <a href="http://bem.info/">here</a>, <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">here</a>, <a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">here</a> and <a href="http://coding.smashingmagazine.com/2012/04/16/a-new-front-end-methodology-bem/">here</a></small></p>
-                </section>
-                <section>
-                    <h3>Example</h3>
-                    <pre><code data-trim class="xml">
-<article class="article">
-    <header class="article__header">...</header>
-    <div class="article__body">...</div>
-    <footer class="article__footer">...</footer>
-</article>
-                    </code></pre>
-                </section>
-                <section>
-                    <h3>... with modifier</h3>
-                    <pre><code data-trim class="xml">
-<!-- note: class chaining -->
-<article class="article article--primary">
-    <header class="article__header">...</header>
-    <div class="article__body">...</div>
-    <footer class="article__footer">...</footer>
-</article>
-                    </code></pre>
-                </section>
-                <section>
-                    <pre><code data-trim class="xml">
-<div class="carousel">
-    <header class="carousel__header">
-        <h3 class="carousel__header__title">Carousel</h3>
-    </header>
-    <div class="carousel__clipper">
-        <ul class="carousel__list">
-            <li class="carousel__list__item">...</li>
-            <li class="carousel__list__item">...</li>
-            <li class="carousel__list__item">...</li>
-            <li class="carousel__list__item">...</li>
-        </ul>
-    </div>
-    <footer class="carousel__nav">
-        <a href="#" class="carousel__nav__item carousel__nav__item--prev">...</a>
-        <a href="#" class="carousel__nav__item carousel__nav__item--next">...</a>
-    </footer>
-</div>
-                    </code></pre>
-                </section>
-                <section>
-                    <h3>Naming conventions</h3>
-                    <pre><code data-trim class="css">
-/* Bad */
-.pageHeader {}
-.button--blue {}
-
-/* Good */
-.page-header {}
-.button--primary {}
-                    </code></pre>
-                </section>
-                <section>
-                    <pre><code class="css" data-trim>
-/* This is OK! */
-.article__header--no-border {}
-.teaser--large--primary {}
-                    </code></pre>
-                </section>
-                <section>
-                    <h1>FUGLY!!!</h1>
-                    <p>&ldquo;BEM, so ugly it actually works!&rdquo;</p>
-                    <p><small>&mdash; <a href="https://twitter.com/jdesramaults">@jdesramaults</a></small></p>
-                    <aside class="notes">
-                        mening verdeeld, t is lelijk maar t doet wel zijn werk. makkelijk herkenbaar, makkelijk te debuggen, makkelijk uit te breiden
-                    </aside>
-                </section>
-                <section>
-                    <h3>Advantages</h3>
-                    <ul>
-                        <li>It's clear what each selector's purpose is</li>
-                        <li>Less chance of colliding with CSS of third party plugins</li>
-                        <li>Lesser nesting of selectors
-                            <pre><code data-trim class="css">
-/* old skool */
-article > header {}
-/* old skool + Smacss theming */
-.theme--x-mas article > header {}
-/* BEM */
-.article__header {}
-/* BEM + SMACSS theming */
-.theme--x-mas .article__header {}
-                            </code></pre>
-                        </li>
-                        <li class="fragment">&hellip; thus, your CSS rendering is faster</li>
-                    </ul>
-                    <aside class="notes">
-                        en snellere css is voor iedereen een WIN
-                    </aside>
-                </section>
-                <section>
-                    <h3>Sass 3.3 + BEM</h3>
-                    <p><a href="http://www.alwaystwisted.com/post.php?s=2014-02-27-even-easier-bem-ing-with-sass-33">Even Easier BEM-ing with Sass 3.3</a></p>
-                    <p><a href="http://benfrain.com/writing-modular-css-bemoocss-selectors-sass-3-3/">Writing modular CSS (BEM/OOCSS) selectors with Sass 3.3</a></p>
-
-                </section>
-                <section>
-                    <pre><code data-trim class="scss">
-.block {
-    &__element {}
-
-    &--modifier {}
-}
-/* output */
-.block {}
-.block__element {}
-.block--modifier {}
-                    </code></pre>
-                </section>
                 <section>
                     <h1>The end</h1>
                     <h3>Questions?</h3>
