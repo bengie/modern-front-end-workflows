@@ -64,7 +64,7 @@
                 </section>
                 <section>
                     <ul>
-                        <li>Modular and scalable architecture
+                        <li>Scalable and Modular Architecture
                             <ul>
                                 <li>SMACSS</li>
                                 <li>JS</li>
@@ -85,6 +85,9 @@
                     </ul>
                     <aside class="notes">
                     </aside>
+                </section>
+                <section>
+                    <h1>Scalable and Modular Architecture</h1>
                 </section>
                 <section>
                     <h2>Scalable and Modular Architecture for CSS</h2>
@@ -325,6 +328,9 @@ ToggleModule = (function() {
                     </code></pre>
                 </section>
                 <section>
+                    <h1>Coding guidelines</h1>
+                </section>
+                <section>
                     <h2>BEM</h2>
                     <p>Block - Element - Modifier</p>
                 </section>
@@ -431,6 +437,9 @@ article > header {}
                 </section>
                 <section>
                     <h2>F$ck jQuery</h2>
+                </section>
+                <section>
+                    <h1>Tools</h1>
                 </section>
                 <section id="preprocessors">
                     <h2>CSS preprocessors</h2>
@@ -691,7 +700,16 @@ dev: {
                     </code></pre>
                 </section>
                 <section>
-                    <a href="https://www.npmjs.org/package/bless">Bless</a>
+                    <p><a href="https://www.npmjs.org/package/bless">Bless</a></p>
+                    <p><code>main.css</code></p>
+                    <pre><code data-trim class="css">
+@import url('main-blessed1.css?z=1400852303781');
+
+/* selector rule #4097 continues here */
+.something {}
+.something-else {}
+...
+                    </code></pre>
                     <aside class="notes">
                         IE's 4096 selector limit
                     </aside>
