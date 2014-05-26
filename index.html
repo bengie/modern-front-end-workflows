@@ -212,6 +212,118 @@ a {
                 <section>
                     <h2>JS modular setup</h2>
                 </section>
+				<section>
+					<h3>Module Pattern</h3>
+					<p>An interchangeable single-part of a larger system that can easily be re-used</p>
+				</section>
+				<section>
+					<h3>Example</h3>
+					<pre><code data-trim class="js">
+(function(){
+  // self executing anonymous function
+}());
+					</code></pre>
+				</section>
+				<section>
+					<h3>This is great but...</h3>
+					<p>there's no privacy</p>
+				</section>
+				<section>
+					<h3>Example</h3>
+					<pre><code data-trim class="js">
+'use strict';
+ToggleModule = (function() {
+
+  // private function
+  function _init() {
+    // collect all toggle objects and make them behave
+  }
+
+  // private function
+  function _show(args) {
+    // show stuff
+  }
+
+  // private function
+  function _hide(args) {
+    // hide stuff
+  }
+
+  // private _init is public available as init
+  return {
+    init: _init
+  };
+
+}());
+					</code></pre>
+				</section>
+				<section>
+					<h3>Mediator pattern</h3>
+					<p>Encapsules how disparate modules interact with each other by acting as an intermediary</p>
+				</section>
+				<section>
+					<h3>Possible implementation: pub/sub</h3>
+					<p>Allows modules to <b>broadcast</b> or <b>listen</b> to notifications without worrying about the system</p>
+				</section>
+				<section>
+					<h3>Example</h3>
+					<pre><code data-trim class="js">
+'use strict';
+ToggleModule = (function() {
+
+  // private function
+  function _init() {
+    // let's the mediator know we have to functions that listen
+    Mediator.subscribe('/toggle/show', _show);
+    Mediator.subscribe('/toggle/hide', _hide);
+    // collect all toggle objects and make them behave
+  }
+
+  // private function
+  function _show(args) {
+    // show stuff
+  }
+
+  // private function
+  function _hide(args) {
+    // hide stuff
+  }
+
+// private _init is public available as init
+  return {
+    init: _init
+  };
+
+}());
+					</code></pre>
+				</section>
+				<section>
+					<h3>Advantages</h3>
+					<ul>
+						<li>Solves modules inter-dependency issues</li>
+						<li>Notifications can be handled by any number of modules at once</li>
+					</ul>
+				</section>
+                <section>
+                    <h3>Folder structure</h3>
+                    <pre><code class="bash">
+| - js
+  |- config
+     config.js
+  |- 3rdparty
+     jquery.min.js
+    ...
+  |- modules
+     toggle.js
+    ...
+  |- vendor
+    modernizr.js
+    webfont.js
+    ...
+  main.js
+  main.toggle.js
+                    </code></pre>
+                </section>
                 <section>
                     <h2>BEM</h2>
                     <p>Block - Element - Modifier</p>
