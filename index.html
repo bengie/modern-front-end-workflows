@@ -438,6 +438,165 @@ article > header {}
                     <h2>F*ck jQuery</h2>
                 </section>
                 <section>
+                    <h3>Why people use jQuery</h3>
+                    <ul>
+                        <li>Easy development</li>
+                        <li>Fixes cross browser issues</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>jQuery is huge!</h3>
+
+                    <ul>
+                        <li>A shitload of plugins</li>
+                        <li>Almost everybody knows / uses jQuery</li>
+                    </ul>
+                </section>
+
+                <section>
+
+                    <h3>No really, jQuery is huge!</h3>
+
+                    <h4 class="fragment">238.66kb normal file size</h4>
+
+                </section>
+
+                <section>
+
+                    <h3>Ok, that's not fair</h3>
+
+                    <div class="fragment">
+                        <h3>28.58kb</h3>
+                        <p>Minified and gZipped</p>
+                    </div>
+
+                </section>
+
+                <section>
+
+                    <h3>That's not so bad?</h3>
+
+                    <div class="fragment">
+                        <img src="img/jquerysize.png" alt="" />
+                        <small><a href="http://mathiasbynens.be/demo/jquery-size">http://mathiasbynens.be/demo/jquery-size</a></small>
+                    </div>
+
+                </section>
+
+                <section>
+
+                    <h3>Do you really need jquery?</h3>
+
+                </section>
+
+                <section>
+
+                    <h3>Common use of jQuery</h3>
+
+                </section>
+
+                <section>
+
+                    <h3>Selectors</h3>
+                    <pre><code class="javascript">$('.my #awesome selector');</code></pre>
+                    <pre class="fragment"><code class="javascript">document.querySelectorAll('.my #awesome selector');</code></pre>
+
+                </section>
+
+                <section>
+
+                    <h3>Finding children</h3>
+
+
+                    <pre><code class="javascript">$(el).find(selector);</code></pre>
+                    <pre class="fragment"><code class="javascript">el.querySelectorAll(selector);</code></pre>
+
+                </section>
+
+                <section>
+
+                    <h3>querySelectorAll?</h3>
+
+                    <img src="img/queryselector.png" alt="" />
+                    <small><a href="http://caniuse.com/#search=querySelectorAll">http://caniuse.com/#search=querySelectorAll</a></small>
+
+                </section>
+
+                <section>
+
+                    <h3>Adding classnames</h3>
+
+                    <pre><code class="javascript">$(el).addClass(className);</code></pre>
+                    <pre class="fragment"><code class="javascript">el.className += ' ' + className;</code></pre>
+
+                    <pre class="fragment"><code class="javascript">
+if (el.classList) {
+    el.classList.add(className);
+}else{
+    el.className += ' ' + className;
+}
+                    </code></pre>
+
+                </section>
+
+                <section>
+
+                    <h3>Width / height</h3>
+
+                    <pre><code class="javascript">$(el).outerHeight()</code></pre>
+                    <pre class="fragment"><code class="javascript">el.offsetHeight</code></pre>
+
+                </section>
+
+                <section>
+
+                    <h3>Parent</h3>
+
+                    <pre><code class="javascript">$(el).parent();</code></pre>
+                    <pre class="fragment"><code class="javascript">el.parentNode</code></pre>
+
+                </section>
+
+                <section>
+
+                    <h3>Dom manipulation</h3>
+
+                    <pre><code class="javascript">$(el).remove();</code></pre>
+                    <pre class="fragment"><code class="javascript">el.parentNode.removeChild(el);</code></pre>
+
+                </section>
+
+                <section>
+
+                    <img src="img/speed.png" alt="" />
+
+                </section>
+
+                <section>
+
+                    <h3>So back to basic?</h3>
+
+                </section>
+
+                <section>
+
+                    <h3>Micro libraries</h3>
+                    <p>Like Qwery, Bonzo, Bean, Reqwest, etc...</p>
+
+                </section>
+
+                <section>
+                    <h2>In our initial setup we used jQuery</h2>
+
+                    <img src="img/with-jquery.png" alt="" />
+                </section>
+
+                <section>
+                    <h2>We switched to micro frameworks</h2>
+                    <img src="img/without-jquery.png" alt="" class="fragment" />
+                </section>
+                <section>
                     <h1>Tools</h1>
                 </section>
                 <section id="preprocessors">
@@ -659,168 +818,13 @@ a:hover {
 .block--modifier {}
                     </code></pre>
                 </section>
-				<section>
-					<h3>Why people use jQuery</h3>
-					<ul>
-						<li>Easy development</li>
-						<li>Fixes cross browser issues</li>
-					</ul>
-				</section>
 
-				<section>
-					<h3>jQuery is huge!</h3>
-
-					<ul>
-						<li>A shitload of plugins</li>
-						<li>Almost everybody knows / uses jQuery</li>
-					</ul>
-				</section>
-
-				<section>
-
-					<h3>No really, jQuery is huge!</h3>
-
-					<h4 class="fragment">238.66kb normal file size</h4>
-
-				</section>
-
-				<section>
-
-					<h3>Ok, that's not fair</h3>
-
-					<div class="fragment">
-						<h3>28.58kb</h3>
-						<p>Minified and gZipped</p>
-					</div>
-
-				</section>
-
-				<section>
-
-					<h3>That's not so bad?</h3>
-
-					<div class="fragment">
-						<img src="img/jquerysize.png" alt="" />
-						<small><a href="http://mathiasbynens.be/demo/jquery-size">http://mathiasbynens.be/demo/jquery-size</a></small>
-					</div>
-
-				</section>
-
-				<section>
-
-					<h3>Do you really need jquery?</h3>
-
-				</section>
-
-				<section>
-
-					<h3>Common use of jQuery</h3>
-
-				</section>
-
-				<section>
-
-					<h3>Selectors</h3>
-					<pre><code class="javascript">$('.my #awesome selector');</code></pre>
-					<pre class="fragment"><code class="javascript">document.querySelectorAll('.my #awesome selector');</code></pre>
-
-				</section>
-
-				<section>
-
-					<h3>Finding children</h3>
-
-
-					<pre><code class="javascript">$(el).find(selector);</code></pre>
-					<pre class="fragment"><code class="javascript">el.querySelectorAll(selector);</code></pre>
-
-				</section>
-
-				<section>
-
-					<h3>querySelectorAll?</h3>
-
-					<img src="img/queryselector.png" alt="" />
-					<small><a href="http://caniuse.com/#search=querySelectorAll">http://caniuse.com/#search=querySelectorAll</a></small>
-
-				</section>
-
-				<section>
-
-					<h3>Adding classnames</h3>
-
-					<pre><code class="javascript">$(el).addClass(className);</code></pre>
-					<pre class="fragment"><code class="javascript">el.className += ' ' + className;</code></pre>
-
-					<pre class="fragment"><code class="javascript">
-if (el.classList) {
-	el.classList.add(className);
-}else{
-	el.className += ' ' + className;
-}
-					</code></pre>
-
-				</section>
-
-				<section>
-
-					<h3>Width / height</h3>
-
-					<pre><code class="javascript">$(el).outerHeight()</code></pre>
-					<pre class="fragment"><code class="javascript">el.offsetHeight</code></pre>
-
-				</section>
-
-				<section>
-
-					<h3>Parent</h3>
-
-					<pre><code class="javascript">$(el).parent();</code></pre>
-					<pre class="fragment"><code class="javascript">el.parentNode</code></pre>
-
-				</section>
-
-				<section>
-
-					<h3>Dom manipulation</h3>
-
-					<pre><code class="javascript">$(el).remove();</code></pre>
-					<pre class="fragment"><code class="javascript">el.parentNode.removeChild(el);</code></pre>
-
-				</section>
-
-				<section>
-
-					<img src="img/speed.png" alt="" />
-
-				</section>
-
-				<section>
-
-					<h3>So back to basic?</h3>
-
-				</section>
-
-				<section>
-
-					<h3>Micro libraries</h3>
-					<p>Like Qwery, Bonzo, Bean, Reqwest, etc...</p>
-
-				</section>
-
-				<section>
-					<h2>In our initial setup we used jQuery</h2>
-
-					<img src="img/with-jquery.png" alt="" />
-				</section>
-
-				<section>
-					<h2>We switched to micro frameworks</h2>
-					<img src="img/without-jquery.png" alt="" class="fragment" />
-				</section>
 
                 <section>
                     <h2>Automate your workflow with Grunt</h2>
+                </section>
+                <section>
+                    <h3>Grunt &amp; JS</h3>
                 </section>
                 <section>
                     <h3>Grunt &amp; CSS</h3>
@@ -870,9 +874,7 @@ dev: {
                         IE's 4096 selector limit
                     </aside>
                 </section>
-                <section>
-                    <h3>Grunt &amp; JS</h3>
-                </section>
+
 
                 <section>
                     <h1>The end</h1>
