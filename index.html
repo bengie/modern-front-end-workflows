@@ -42,17 +42,22 @@
 
             <div class="slides">
                 <section>
-                    <h1>A frontend workflow</h1>
+                    <h1>A front-end workflow</h1>
                     <p>
                         <small>Techorama 2014, by <a href="http://builtbyrobot.com">Jochen Vandendriessche</a> and <a href="http://diezjietal.be">Gregory Van Looy</a></small>
                     </p>
+                    <aside class="notes">
+                        open source - cross platform
+                    </aside>
                 </section>
                 <section>
                     <h3>Jochen Vandendriessche</h3>
                     <p>Freelance front-end developer - JS junkie</p>
+                    <p><a href="https://twitter.com/joggink">@joggink</a></p>
                     <p><br></p>
                     <h3>Gregory Van Looy</h3>
                     <p>Freelance HTML &amp; CSS architect - sucks @ JS</p>
+                    <p><a href="https://twitter.com/bengie">@bengie</a></p>
                     <aside class="notes">
                         1yr @ DPP -> new workflow for in-house team
                     </aside>
@@ -87,6 +92,7 @@
                         </li>
                     </ul>
                     <aside class="notes">
+                        based on our workflow @ DPP - in conjunction with them -
                     </aside>
                 </section>
                 <section>
@@ -831,12 +837,12 @@ a:hover {
 					<h3>What is grunt?</h3>
 					<p>In one word: <b>automation</b>. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes.</p>
 				</section>
-				
+
 				<section>
 					<h3>How does it work?</h3>
 					<p>Grunt and Grunt plugins are installed and managed via npm, the Node.js package manager.</p>
 				</section>
-				
+
                 <section>
                     <h3>Grunt &amp; JS</h3>
                 </section>
@@ -844,7 +850,7 @@ a:hover {
 				<section>
 					<a href="https://www.npmjs.org/package/grunt-contrib-jshint">grunt-contrib-jshint</a>
 				</section>
-				
+
 				<section>
 <pre><code data-trim class="js">
 options: {
@@ -877,15 +883,15 @@ options: {
 all: ['<%= package.jssrc %>/modules/*.js', '<%= package.jssrc %>/*.js', '<%= package.jssrc %>/test/spec/*.js']
 </code></pre>
 				</section>
-				
+
 				<section>
 					<img src="img/grunt-jshint.png" alt="" />
 				</section>
-				
+
 				<section>
 					<a href="https://www.npmjs.org/package/grunt-contrib-concat">grunt-contrib-concat</a>
 				</section>
-				
+
 				<section>
 <pre><code data-trim class="js">
 options: {
@@ -903,15 +909,15 @@ dist: {
 }
 </code></pre>
 				</section>
-				
+
 				<section>
 					<img src="img/grunt-concat.png" alt="" />
 				</section>
-				
+
 				<section>
 					<a href="https://www.npmjs.org/package/grunt-contrib-uglify">grunt-contrib-uglify</a>
 				</section>
-				
+
 				<section>
 <pre><code data-trim class="js">
 options: {
@@ -930,11 +936,11 @@ dist: {
 }
 </code></pre>
 				</section>
-				
+
 				<section>
 					<img src="img/grunt-uglify.png" alt="" />
 				</section>
-				
+
                 <section>
                     <h3>Grunt &amp; CSS</h3>
                 </section>
